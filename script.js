@@ -9,7 +9,7 @@ const tabela=document.getElementById('tabela')
 const aviso=document.getElementById('aviso')
 
 async function getVenda(ida){
-    const url=`https://fastapi-ds.up.railway.app/vendas/${ida}`
+    const url=`https://fastapi-ds.up.railway.app/pesquisa?id=${ida}`
 
     fetch(url).then((response)=>response.json())
     .then(criaLinha)
