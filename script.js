@@ -3,6 +3,7 @@ const id=document.getElementById('id_text')
 const bt_busca=document.getElementById('busca')
 const bt_limpa=document.getElementById('limpa')
 const bt_lista=document.getElementById('lista')
+const bt_insere=document.getElementById('insere')
 
 const tabela=document.getElementById('tabela')
 
@@ -77,4 +78,9 @@ bt_lista.addEventListener('click', ()=>{
 
 bt_limpa.addEventListener('click', ()=>{
     limpar()
+})
+
+
+bt_insere.addEventListener('click', ()=>{
+    console.log('inserindo')
 })
