@@ -1,4 +1,7 @@
 const id=document.getElementById('id_text')
+const nome=document.getElementById('nome')
+const valor=document.getElementById('valor_uni')
+const quantidade=document.getElementById('quantidade')
 
 const bt_busca=document.getElementById('busca')
 const bt_limpa=document.getElementById('limpa')
@@ -10,7 +13,8 @@ const tabela=document.getElementById('tabela')
 const aviso=document.getElementById('aviso')
 
 async function getVenda(ida){
-    const url=`https://fastapi-ds.up.railway.app/pesquisa?id=${ida}`
+    // const url=`https://fastapi-ds.up.railway.app/vendas/${ida}`
+    const url=`http://localhost:8000/pesquisa?id=${ida}`
 
     fetch(url).then((response)=>response.json())
     .then(criaLinha)
@@ -19,16 +23,46 @@ async function getVenda(ida){
 }
 
 async function getVendas(){
-    const url='https://fastapi-ds.up.railway.app'
+    // const url='https://fastapi-ds.up.railway.app'
+    const url='http://localhost:8000/'
 
     fetch(url).then((response)=>response.json())
     .then(criaTabela)
 }
 
+
+
+async function insertVendas(nome, valor, quantidade){
+    // const url='https://fastapi-ds.up.railway.app'
+    const url='http://localhost:8000/insert'
+
+    if(nome!=''&&valor!=''&&quantidade!=''){
+
+        fetch(url,{
+            method:"POST",
+            body: JSON.stringify({
+                nome:nome,
+                valor_uni:valor,
+                quantidade:quantidade
+            }),headers:{
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then((response)=>response.json()).then((element)=>{console.log(element)})
+    }
+    
+}
+
+
+
+
+
 function limpar(){
     tabela.innerHTML=''
     id.value=''
     aviso.innerText=''
+    nome.value= ''
+    valor.value= ''
+    quantidade.value= ''
 }
 
 function criaLinha(venda_info){
@@ -80,7 +114,10 @@ bt_limpa.addEventListener('click', ()=>{
     limpar()
 })
 
-
 bt_insere.addEventListener('click', ()=>{
-    console.log('inserindo')
+    insertVendas(nome.value, valor.value, quantidade.value)
+    nome.value= ''
+    valor.value= ''
+    quantidade.value= ''
+    getVendas()
 })

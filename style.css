@@ -30,6 +30,7 @@ table{
     min-width: 60vw;
 
     margin-top: 1rem;
+    width: 100%;
 }td, th{
     border: 1px solid black;
 }th{
