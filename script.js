@@ -13,8 +13,8 @@ const tabela=document.getElementById('tabela')
 const aviso=document.getElementById('aviso')
 
 async function getVenda(ida){
-    // const url=`https://fastapi-ds.up.railway.app/vendas/${ida}`
-    const url=`http://localhost:8000/pesquisa?id=${ida}`
+    const url=`https://fastapi-ds.up.railway.app/pesquisa?id=${ida}`
+    //const url=`http://localhost:8000/pesquisa?id=${ida}`
 
     fetch(url).then((response)=>response.json())
     .then(criaLinha)
@@ -23,8 +23,8 @@ async function getVenda(ida){
 }
 
 async function getVendas(){
-    // const url='https://fastapi-ds.up.railway.app'
-    const url='http://localhost:8000/'
+    const url='https://fastapi-ds.up.railway.app'
+    //const url='http://localhost:8000/'
 
     fetch(url).then((response)=>response.json())
     .then(criaTabela)
@@ -33,8 +33,8 @@ async function getVendas(){
 
 
 async function insertVendas(nome, valor, quantidade){
-    // const url='https://fastapi-ds.up.railway.app'
-    const url='http://localhost:8000/insert'
+    const url='https://fastapi-ds.up.railway.app/insert'
+    //const url='http://localhost:8000/insert'
 
     if(nome!=''&&valor!=''&&quantidade!=''){
 
